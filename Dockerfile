@@ -11,20 +11,16 @@ LABEL version="$VERSION"
 RUN addgroup --gid $UGID rtorrent && \
     adduser -S -u $UGID -G rtorrent rtorrent && \
     apk add --no-cache rtorrent="$VERSION" && \
-    mkdir -p /home/rtorrent/.rtorrent/config.d/ && \
-    mkdir -p /home/rtorrent/.rtorrent/.session/ && \
-    mkdir -p /home/rtorrent/.rtorrent/download/ && \
-    mkdir -p /home/rtorrent/.rtorrent/watch/ && \
-    chown -R rtorrent:rtorrent /home/rtorrent/.rtorrent/ && \
-    cp -r /home/rtorrent/.rtorrent/ /home/rtorrent/rtorrent/
-
-COPY --chown=rtorrent:rtorrent config.d/ /home/rtorrent/.rtorrent/config.d/
+    mkdir -p /home/rtorrent/rtorrent/config.d/ && \
+    mkdir -p /home/rtorrent/rtorrent/.session/ && \
+    mkdir -p /home/rtorrent/rtorrent/download/ && \
+    mkdir -p /home/rtorrent/rtorrent/watch/
+    
+COPY --chown=rtorrent:rtorrent config.d/ /home/rtorrent/rtorrent/config.d/
 COPY --chown=rtorrent:rtorrent .rtorrent.rc /home/rtorrent/
 COPY --chown=rtorrent:rtorrent entrypoint.sh /home/rtorrent/entrypoint.sh
 
-RUN rm -rf /home/rtorrent/rtorrent/config.d/ && \
-    cp -r /home/rtorrent/.rtorrent/config.d/ /home/rtorrent/rtorrent/config.d/ && \
-    chown -R rtorrent:rtorrent /home/rtorrent/rtorrent/
+RUN chown -R rtorrent:rtorrent /home/rtorrent/rtorrent/
 
 VOLUME /home/rtorrent/rtorrent/.session
 
