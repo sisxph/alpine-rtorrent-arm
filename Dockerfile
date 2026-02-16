@@ -36,4 +36,4 @@ USER rtorrent
 
 WORKDIR /home/rtorrent/
 
-CMD ["/home/rtorrent/entrypoint.sh"]
+CMD rtorrent
