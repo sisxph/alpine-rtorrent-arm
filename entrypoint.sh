@@ -7,4 +7,5 @@ if [ -z "$(ls -A /home/rtorrent/rtorrent/config.d/)" ]; then
 fi 
 
 chown -R rtorrent:rtorrent /home/rtorrent/rtorrent/
-rtorrent
+#rtorrent
+/bin/sh
