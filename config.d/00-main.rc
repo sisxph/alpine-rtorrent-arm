@@ -8,10 +8,12 @@
 
 
 ## Instance layout (base paths)
-method.insert = cfg.download, private|const|string, (cat,(cfg.basedir),"downloads/")
+method.insert = cfg.download, private|const|string, (cat,(cfg.basedir),"download/")
 method.insert = cfg.session,  private|const|string, (cat,(cfg.basedir),".session/")
 method.insert = cfg.watch,    private|const|string, (cat,(cfg.basedir),"watch/")
 
+
+## Create instance directories
 execute.throw = sh, -c, (cat,\
     "mkdir -p \"",(cfg.watch),"/load\" ",\
     "\"",(cfg.watch),"/start\" ")
@@ -24,9 +26,6 @@ session.use_lock.set = no
 ## Listening port for incoming peer traffic (fixed; you can also randomize it)
 network.port_range.set = 50000-50000
 network.port_random.set = no
-
-# Set whether the client should try to connect to UDP trackers.
-trackers.use_udp.set = no
 
 
 ## Peer settings
@@ -44,7 +43,7 @@ protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 
 ## Limits for file handle resources, this is optimized for
 ## an `ulimit` of 1024 (a common default). You MUST leave
-## a ceiling of handles reserved for rTorrent s internal needs!
+## a ceiling of handles reserved for rTorrent's internal needs!
 network.http.max_open.set = 50
 network.max_open_files.set = 600
 network.max_open_sockets.set = 300
@@ -66,7 +65,7 @@ execute.nothrow = sh, -c, (cat, "echo >",\
 
 
 ## Other operational settings (check & adapt)
-encoding.add = utf8
+encoding.add = UTF-8
 system.umask.set = 0027
 system.cwd.set = (directory.default)
 network.http.dns_cache_timeout.set = 25
@@ -77,7 +76,8 @@ schedule2 = monitor_diskspace, 15, 60, ((close_low_diskspace, 1000M))
 #network.http.capath.set = "/etc/ssl/certs"
 #network.http.ssl_verify_peer.set = 0
 #network.http.ssl_verify_host.set = 0
-
+#network.rpc.use_xmlrpc.set = true
+#network.rpc.use_jsonrpc.set = true
 
 ## Some additional values and commands
 method.insert = system.startup_time, value|const, (system.time)
