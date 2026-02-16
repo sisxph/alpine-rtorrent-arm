@@ -8,7 +8,7 @@ method.insert = cfg.dht_session, private|const|string, (cat,(cfg.basedir), ".dht
 execute.throw = sh, -c, (cat, "mkdir -p " , (cfg.dht_session))
 
 ## UDP port to use for DHT.
-dht.port.set = 6881
+dht.override_port.set = 6881
 #dht.add_node=dht.transmissionbt.com
 #dht.add_node=router.utorrent.com
 #dht.add_node=router.bittorrent.com
