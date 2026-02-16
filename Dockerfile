@@ -13,7 +13,7 @@ RUN addgroup --gid $UGID rtorrent && \
     apk add --no-cache rtorrent="$VERSION" && \
     mkdir -p /home/rtorrent/.rtorrent/config.d/ && \
     mkdir -p /home/rtorrent/.rtorrent/.session/ && \
-    mkdir -p /home/rtorrent/.rtorrent/downloads/ && \
+    mkdir -p /home/rtorrent/.rtorrent/download/ && \
     mkdir -p /home/rtorrent/.rtorrent/watch/ && \
     chown -R rtorrent:rtorrent /home/rtorrent/.rtorrent/ && \
     cp -r /home/rtorrent/.rtorrent/ /home/rtorrent/rtorrent/
