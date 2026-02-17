@@ -32,7 +32,7 @@ RUN mkdir -p /home/rtorrent/rtorrent/config.d/ && \
     
 COPY --chown=rtorrent:rtorrent config.d/ /home/rtorrent/rtorrent/config.d/
 COPY --chown=rtorrent:rtorrent .rtorrent.rc /home/rtorrent/
-RUN  chown -R rtorrent:rtorrent /home/rtorrent/
+
 WORKDIR /home/rtorrent/
 
 CMD ["rtorrent"]
