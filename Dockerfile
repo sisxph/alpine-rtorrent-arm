@@ -14,7 +14,6 @@ EXPOSE 16891
 EXPOSE 6881
 EXPOSE 6881/udp
 EXPOSE 50000
-EXPOSE 3000
 
 
 RUN addgroup --gid $UGID rtorrent && \
