@@ -36,4 +36,4 @@ USER rtorrent
 
 WORKDIR /home/rtorrent/
 
-CMD rtorrent
+CMD ["rtorrent"]
