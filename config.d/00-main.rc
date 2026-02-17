@@ -103,6 +103,8 @@ system.daemon.set = true
 #INET socket
 network.scgi.open_port = 0.0.0.0:16891
 #Flood
+method.redirect=load.throw,load.normal
+method.redirect=load.start_throw,load.start
 method.insert=d.down.sequential,value|const,0
 method.insert=d.down.sequential.set,value|const,0
 
