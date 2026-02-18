@@ -8,8 +8,6 @@ LABEL description="rTorrent on Alpine Linux, with a better Docker integration."
 LABEL website="https://github.com/TuxMeaLux/alpine-rtorrent"
 LABEL version="$VERSION"
 
-VOLUME /home/rtorrent/rtorrent/.session
-
 EXPOSE 16891
 EXPOSE 6881
 EXPOSE 6881/udp
