@@ -98,11 +98,11 @@ schedule2 = watch_start, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "start
 ## Run the rTorrent process as a daemon in the background
 ## (and control via XMLRPC sockets)
 system.daemon.set = true
-#network.scgi.open_local = (cat,(session.path),rpc.socket)
-#execute.nothrow = chmod,770,(cat,(session.path),rpc.socket)
-#INET socket
-network.scgi.open_port = 0.0.0.0:16891
-#Flood
+network.scgi.open_local = (cat,(session.path),rpc.socket)
+execute.nothrow = chmod,777,(cat,(session.path),rpc.socket)
+## INET socket
+#network.scgi.open_port = 0.0.0.0:16891
+## Flood
 method.redirect=load.throw,load.normal
 method.redirect=load.start_throw,load.start
 method.insert=d.down.sequential,value|const,0
