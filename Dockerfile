@@ -16,7 +16,7 @@ EXPOSE 50000
 
 RUN addgroup --gid $UGID rtorrent && \
     adduser -S -u $UGID -G rtorrent rtorrent
-    
+
 RUN apk add --no-cache rtorrent="$VERSION"
 
 
@@ -26,13 +26,12 @@ RUN mkdir -p /home/rtorrent/rtorrent/config.d/ && \
     mkdir -p /home/rtorrent/rtorrent/.session/ && \
     mkdir -p /home/rtorrent/rtorrent/download/ && \
     mkdir -p /home/rtorrent/rtorrent/watch/
-    
+
 COPY --chown=rtorrent:rtorrent config.d/ /home/rtorrent/rtorrent/config.d/
 COPY --chown=rtorrent:rtorrent .rtorrent.rc /home/rtorrent/
 
 VOLUME /home/rtorrent/rtorrent/download
 VOLUME /home/rtorrent/rtorrent/.session
-VOLUME /tmp/socket
 VOLUME /home/rtorrent/rtorrent/watch
 
 WORKDIR /home/rtorrent/
