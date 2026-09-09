@@ -60,7 +60,6 @@ network.xmlrpc.size_limit.set = 16M
 
 ## Basic operational settings (no need to change these)
 session.path.set = (cat, (cfg.session))
-socket.path.set = (cat, (cfg.socket))
 directory.default.set = (cat, (cfg.download))
 execute.nothrow = sh, -c, (cat, "echo >",\
     (session.path), "rtorrent.pid", " ",(system.pid))
