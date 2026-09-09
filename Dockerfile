@@ -14,22 +14,22 @@ EXPOSE 6881/udp
 EXPOSE 50000
 
 
-RUN addgroup --gid $UGID download && \
-    adduser -S -u $UGID -G download download
+RUN addgroup --gid $UGID rtorrent && \
+    adduser -S -u $UGID -G rtorrent rtorrent
     
 RUN apk add --no-cache rtorrent="$VERSION"
 
 
-USER download
+USER rtorrent
 
-RUN mkdir -p /home/download/rtorrent/config.d/ && \
-    mkdir -p /home/download/rtorrent/.session/ && \
-    mkdir -p /home/download/rtorrent/download/ && \
-    mkdir -p /home/download/rtorrent/watch/
+RUN mkdir -p /home/rtorrent/rtorrent/config.d/ && \
+    mkdir -p /home/rtorrent/rtorrent/.session/ && \
+    mkdir -p /home/rtorrent/rtorrent/download/ && \
+    mkdir -p /home/rtorrent/rtorrent/watch/
     
-COPY --chown=download:download config.d/ /home/download/rtorrent/config.d/
-COPY --chown=download:download .rtorrent.rc /home/download/
+COPY --chown=rtorrent:rtorrent config.d/ /home/rtorrent/rtorrent/config.d/
+COPY --chown=rtorrent:rtorrent .rtorrent.rc /home/rtorrent/
 
-WORKDIR /home/download/
+WORKDIR /home/rtorrent/
 
 CMD ["rtorrent"]
