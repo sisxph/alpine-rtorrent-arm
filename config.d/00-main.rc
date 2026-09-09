@@ -8,8 +8,9 @@
 
 
 ## Instance layout (base paths)
-method.insert = cfg.download, private|const|string, (cat,"/download/")
+method.insert = cfg.download, private|const|string, (cat,(cfg.basedir),"download/")
 method.insert = cfg.session,  private|const|string, (cat,(cfg.basedir),".session/")
+method.insert = cfg.socket,   private|const|string, (cat,(cfg.basedir),"socket/")
 method.insert = cfg.watch,    private|const|string, (cat,(cfg.basedir),"watch/")
 
 
@@ -59,6 +60,7 @@ network.xmlrpc.size_limit.set = 16M
 
 ## Basic operational settings (no need to change these)
 session.path.set = (cat, (cfg.session))
+socket.path.set = (cat, (cfg.socket))
 directory.default.set = (cat, (cfg.download))
 execute.nothrow = sh, -c, (cat, "echo >",\
     (session.path), "rtorrent.pid", " ",(system.pid))
@@ -98,8 +100,8 @@ schedule2 = watch_start, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "start
 ## Run the rTorrent process as a daemon in the background
 ## (and control via XMLRPC sockets)
 system.daemon.set = true
-#network.scgi.open_local = (cat,(session.path),rpc.socket)
-execute.nothrow = chmod,777,(cat,(session.path),rpc.socket)
+#network.scgi.open_local = (cat,(socket.path),rpc.socket)
+execute.nothrow = chmod,777,(cat,(socket.path),rpc.socket)
 ## INET socket
 network.scgi.open_port = 127.0.0.1:16891
 ## Flood
