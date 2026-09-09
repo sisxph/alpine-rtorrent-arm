@@ -24,9 +24,8 @@ execute.throw = sh, -c, (cat,\
 session.use_lock.set = no
 
 ## Listening port for incoming peer traffic (fixed; you can also randomize it)
-network.listen.port.range.set = 50000-50000
-network.listen.port.random.set = no
-
+network.port_range.set = 50000-50000
+network.port_random.set = no
 
 
 ## Peer settings
