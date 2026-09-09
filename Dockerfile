@@ -32,7 +32,7 @@ COPY --chown=rtorrent:rtorrent .rtorrent.rc /home/rtorrent/
 
 VOLUME /home/rtorrent/rtorrent/download
 VOLUME /home/rtorrent/rtorrent/.session
-VOLUME /tmp/rtorrent.socket
+VOLUME /tmp/socket
 VOLUME /home/rtorrent/rtorrent/watch
 
 WORKDIR /home/rtorrent/
